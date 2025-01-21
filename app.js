@@ -9,7 +9,7 @@ app.use(express.json());
 app.use("/api/v1", Router);
 
 app.all("*", (req, res, next) => {
-  next(new AppError(404, "Not Found"));
+  next(new AppError("Not found", 404));
 });
 
 app.use(errorHandler);
