@@ -1,6 +1,7 @@
 const { getAll } = require("../models/Model");
+const AppError = require("../utils/appError");
 
-exports.getAll = async (req, res) => {
+exports.getAll = async (req, res, next) => {
   try {
     const data = await getAll();
     res.status(200).json({
@@ -8,9 +9,6 @@ exports.getAll = async (req, res) => {
       data,
     });
   } catch (err) {
-    res.status(500).json({
-      status: "fail",
-      message: err.message,
-    });
+    next(new AppError(err.message));
   }
 };
