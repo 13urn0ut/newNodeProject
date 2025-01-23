@@ -1,6 +1,7 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import eslintConfigPrettier from "eslint-config-prettier";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -8,6 +9,7 @@ export default [
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
   pluginJs.configs.recommended,
   eslintPluginPrettierRecommended,
+  eslintConfigPrettier,
   {
     rules: {
       "prettier/prettier": [
@@ -16,6 +18,7 @@ export default [
           endOfLine: "auto",
         },
       ],
+
       "spaced-comment": "off",
       "no-console": "warn",
       "consistent-return": "off",
@@ -27,7 +30,7 @@ export default [
       "no-underscore-dangle": "off",
       "class-methods-use-this": "off",
       "prefer-destructuring": ["error", { object: true, array: false }],
-      "no-unused-vars": ["error", { argsIgnorePattern: "req|res|next|val" }],
+      "no-unused-vars": ["warn", { argsIgnorePattern: "req|res|next|val" }],
     },
   },
 ];

@@ -1,7 +1,6 @@
+require("dotenv").config();
 const server = require("./app");
 const { testConnection, sql } = require("./dbConnection");
-
-require("dotenv").config();
 
 const port = process.env.PORT;
 
